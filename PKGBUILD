@@ -18,6 +18,7 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   install -Dm755 gibo "${pkgdir}/usr/bin/gibo"
   install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 gibo-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gibo"
   install -Dm644 gibo-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_gibo"
 }
