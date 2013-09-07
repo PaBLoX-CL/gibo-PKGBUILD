@@ -1,32 +1,24 @@
 # Maintainer: Pablo Olmos de Aguilera Corradini <pablo at glatelier dot org>
 
-pkgname=gibo-git
-pkgver=20130211
-pkgrel=1
+_gitname=gitignore-boilerplates
+pkgname=${_gitname}-git
+pkgver=32.9b1a5f8
+pkgrel=2
 pkgdesc='A shell script for easily accessing gitignore boilerplates from github.com'
 arch=('any')
 url='https://github.com/simonwhitaker/gitignore-boilerplates'
-license=('custom:unlicense')
+license=('custom:UNLICENSE')
 makedepends=('git')
-provides=('gibo')
-install=gibo-git.install
+provides=('gitignore-boilerplates')
+install=${_gitname}-git.install
+source=("${_gitname}::git://github.com/simonwhitaker/${_gitname}.git"
+        "${install}")
+sha256sums=('SKIP'
+            'a26ff45bf7fee701d504dfc31dad84c09c3694de6b2b8ef32d73c654e7c1edca')
 
-_gitroot=https://github.com/simonwhitaker/gitignore-boilerplates
-_gitname=gibo
-
-build() {
-  cd "$srcdir"
-
-  msg "Connecting to GIT repository $_gitroot..."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+pkgver() {
+  cd ${_gitname}
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
