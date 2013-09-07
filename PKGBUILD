@@ -1,20 +1,21 @@
+# Submitter: Gianni Vialett <gianni at rootcube dot net>
 # Maintainer: Pablo Olmos de Aguilera Corradini <pablo at glatelier dot org>
 
-pkgname=gibo
-_pkgname='gitignore-boilerplates'
+pkgname=gitignore-boilerplates
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell script for easily accessing gitignore boilerplates from github.com'
 arch=('any')
 url='https://github.com/simonwhitaker/gitignore-boilerplates'
-license=('custom:unlicense')
-conflicts=('gibo-git')
-install=gibo.install
-source=("https://github.com/simonwhitaker/${_pkgname}/archive/${pkgver}.tar.gz")
+license=('custom:UNLICENSE')
+makedepends=('git')
+conflicts=('gitignore-git')
+install=gitignore-boilerplates.install
+source=("https://github.com/simonwhitaker/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('f686f27f6e828664bc8857c9bc8ea3684ba01faf74897f8f0c3092caba1c998c')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 gibo "${pkgdir}/usr/bin/gibo"
   install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
