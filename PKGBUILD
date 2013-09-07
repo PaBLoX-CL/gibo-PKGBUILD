@@ -3,13 +3,14 @@
 _gitname=gitignore-boilerplates
 pkgname=${_gitname}-git
 pkgver=32.9b1a5f8
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell script for easily accessing gitignore boilerplates from github.com'
 arch=('any')
 url='https://github.com/simonwhitaker/gitignore-boilerplates'
 license=('custom:UNLICENSE')
 makedepends=('git')
 provides=('gitignore-boilerplates')
+conflicts=('gitignore-boilerplates')
 install=${_gitname}-git.install
 source=("${_gitname}::git://github.com/simonwhitaker/${_gitname}.git"
         "${install}")
